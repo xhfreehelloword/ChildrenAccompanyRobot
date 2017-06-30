@@ -1,0 +1,84 @@
+//
+//  PrefixHeader.pch
+//  ChildrenAccompanyRobot
+//
+//  Created by aviccxzx on 17/6/20.
+//  Copyright © 2017年 aviccxzx. All rights reserved.
+//
+
+#import "UIView+MDRExtension.h"
+#import <Masonry.h>
+
+// 打印方式
+#ifdef DEBUG
+#define BJLog(...) NSLog(__VA_ARGS__)
+#else
+#define BJLog(...)
+#endif
+
+
+
+/*------------------------------常用标注样式------------------------------*/
+// 注意: 此处仅设置公共标注样式, 私有的单独写到各自vc/view的.m文件
+
+// 用户状态
+#define kLockUserName @"userName"           // 取用户名K值
+#define kLoginCondition  @"LoginCondition"  // 是否为登录状态的标记
+
+// 尺寸(屏幕)
+#define kScreenBounds [UIScreen mainScreen].bounds
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+// 尺寸(间距)
+#define kMargin10PX   5
+#define kMargin12PX   6
+#define kMargin16PX   8
+#define kMargin18PX   9
+#define kMargin20PX   10
+
+#define kNavBarHeight  64
+#define kSegmentHeight 33
+#define kSearchViewH   45
+
+// 字体
+#define kFont18PX    [UIFont systemFontOfSize:9.0]
+#define kFont20PX    [UIFont systemFontOfSize:10.0]
+#define kFont22PX    [UIFont systemFontOfSize:11.0]
+#define kFont24PX    [UIFont systemFontOfSize:12.0]
+#define kFont26PX    [UIFont systemFontOfSize:13.0]
+#define kFont28PX    [UIFont systemFontOfSize:14.0]
+#define kFont30PX    [UIFont systemFontOfSize:15.0]
+#define kFont32PX    [UIFont systemFontOfSize:16.0]
+#define kFont34PX    [UIFont systemFontOfSize:17.0]
+#define kFont36PX    [UIFont systemFontOfSize:18.0]
+#define kFont38PX    [UIFont systemFontOfSize:19.0]
+#define kFont42PX    [UIFont systemFontOfSize:21.0]
+
+// 颜色
+
+//#define kColor000000_60 [UIColor colorWithRed:0/256.0 green:0/256.0 blue:0/256.0 alpha:0.60]    // 60% bannerTitleViewBGColor
+//#define kColor000000_75 [UIColor colorWithRed:0/256.0 green:0/256.0 blue:0/256.0 alpha:0.75]    // 75% moreVcBGColor
+//#define kColor282828 [UIColor colorWithRed:40/256.0 green:40/256.0 blue:40/256.0 alpha:1.0]
+//#define kColor343434 [UIColor colorWithRed:52/256.0 green:52/256.0 blue:52/256.0 alpha:1.0]
+//#define kColor35AEF3 [UIColor colorWithRed:53/256.0 green:174/256.0 blue:243/256.0 alpha:1.0]
+//#define kColor39ADF6 [UIColor colorWithRed:57/256.0 green:173/256.0 blue:246/256.0 alpha:1.0]
+//#define kColor424242 [UIColor colorWithRed:66/256.0 green:66/256.0 blue:66/256.0 alpha:1.0]
+//#define kColor50B7F2 [UIColor colorWithRed:80/256.0 green:183/256.0 blue:242/256.0 alpha:1.0]
+//#define kColor51BEF9 [UIColor colorWithRed:81/256.0 green:190/256.0 blue:249/256.0 alpha:1.0]
+//#define kColor6DC6D4 [UIColor colorWithRed:109/256.0 green:198/256.0 blue:212/256.0 alpha:1.0]
+//#define kColor676767 [UIColor colorWithRed:103/256.0 green:103/256.0 blue:103/256.0 alpha:1.0]
+//#define kColor878787 [UIColor colorWithRed:135/256.0 green:135/256.0 blue:135/256.0 alpha:1.0]
+//#define kColorEEEEEE [UIColor colorWithRed:238/256.0 green:238/256.0 blue:238/256.0 alpha:1.0]  // tableViewBGColr & separatorLineColor
+//#define kColorA7A7A7 [UIColor colorWithRed:167/256.0 green:167/256.0 blue:167/256.0 alpha:1.0]
+//#define kColorF070AB [UIColor colorWithRed:240/256.0 green:112/256.0 blue:171/256.0 alpha:1.0]
+//#define kColorF16264 [UIColor colorWithRed:241/256.0 green:97/256.0 blue:100/256.0 alpha:1.0]
+//#define kColorFEBA00 [UIColor colorWithRed:254/256.0 green:186/256.0 blue:0/256.0 alpha:1.0]
+//#define kColorFF619A [UIColor colorWithRed:255/256.0 green:97/256.0 blue:154/256.0 alpha:1.0]
+//#define kColorFFB700 [UIColor colorWithRed:255/256.0 green:183/256.0 blue:0/256.0 alpha:1.0]
+//#define kColorFFFFFF [UIColor colorWithRed:255/256.0 green:255/256.0 blue:255/256.0 alpha:1.0]  // bannerTitleColor
+
+#define kColor28E2FA [UIColor colorWithRed:40/256.0 green:226/256.0 blue:250/256.0 alpha:1.0] // 背景蓝
+#define kColorFEFFFF [UIColor colorWithRed:254/256.0 green:255/256.0 blue:255/256.0 alpha:1.0]  // 输入框底色
+#define kColor9EF1FC [UIColor colorWithRed:165/256.0 green:241/256.0 blue:252/256.0 alpha:1.0]
+#define kColorRandom [UIColor colorWithRed:arc4random_uniform(256)/256.0 green:arc4random_uniform(256)/256.0 blue:arc4random_uniform(256)/256.0 alpha:1.0]  // 随机色
+/*------------------------------常用标注样式------------------------------*/
