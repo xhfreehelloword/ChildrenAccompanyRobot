@@ -7,6 +7,9 @@
 //
 
 #import "LogoinViewController.h"
+#import "singViewController.h"
+#import "forgetPassViewController.h"
+
 
 @interface LogoinViewController (){
     UIImageView *_iconImage;
@@ -25,9 +28,11 @@
 #define kUILeft 50
 #define kUIright -50
 #define kUIHeight 50
-#define kUIMargen
+#define kUIMargen 10
 
+//-----------------------------------------------------------
 
+#define kUIFont32XP [UIFont systemFontOfSize:16]
 
 @end
 
@@ -36,8 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.view.backgroundColor = kColor28E2FA;
+    [self.navigationController setNavigationBarHidden:YES];
     
     // 背景
     UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WechatIMG14"]];
@@ -49,18 +53,50 @@
     [bgView addSubview:VeffectV];
     [self.view addSubview:bgView];
     
-    UITapGestureRecognizer *topGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(retractKeyboard)];
-    topGes.numberOfTapsRequired = 1;
-    topGes.numberOfTouchesRequired = 1;
-    [self.view addGestureRecognizer:topGes];
-    
-    
-    
     
     [self setUpUI];
 }
 
+- (void)loginBtnClick:(UIButton *)ssender {
+    NSLog(@"登    录");
+}
+
+- (void)touchupinsidesignUpUserBtn
+{
+    NSLog(@"注册新用户");
+    
+    singViewController *singVC = [[singViewController alloc] init];
+//    [self.navigationController popToViewController:singVC animated:YES];
+    [self.navigationController pushViewController:singVC animated:YES];
+    
+}
+
+- (void)touchupinsideforgetPassWordBtn
+{
+    NSLog(@"忘记密码");
+}
+
+- (void)lookPassWord:(UIButton *)sender // 显示密码
+{
+    sender.highlighted = !sender.highlighted;
+    _passWordTF.secureTextEntry = !_passWordTF.secureTextEntry;
+}
+
+- (void)retractKeyboard // view结束编辑状态
+{[self.view endEditing:YES];}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)setUpUI {
+    
+    UITapGestureRecognizer *topGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(retractKeyboard)];
+    topGes.numberOfTapsRequired = 1;
+    topGes.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:topGes];
     
     _iconImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Snip20170621_11"]];
     [self.view addSubview:_iconImage];
@@ -70,7 +106,7 @@
         make.centerX.mas_equalTo(self.view.mas_centerX);
     }];
     
-
+    
     _UserNameTF = [self getUpTextFieldWithPlaceholder:@"请输入手机号" andTextFieldImage:@""];
     _UserNameTF.keyboardType = UIKeyboardTypePhonePad;
     [_UserNameTF mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +118,7 @@
     
     _passWordTF = [self getUpTextFieldWithPlaceholder:@"密码" andTextFieldImage:@""];
     _passWordTF.secureTextEntry = YES;
-//    _passWordTF.keyboardType = UIKeyboardTypeNamePhonePad;
+    //    _passWordTF.keyboardType = UIKeyboardTypeNamePhonePad;
     [_passWordTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_UserNameTF.mas_bottom).mas_offset(kUITop);
         make.left.mas_equalTo(kUILeft);
@@ -99,7 +135,38 @@
     [LookPassBtn addTarget:self action:@selector(lookPassWord:) forControlEvents:UIControlEventTouchUpInside];
     
     _forgetPassWord = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_forgetPassWord setTitle:@"忘记密码" forState:UIControlStateNormal];
+    _forgetPassWord.titleLabel.font = kUIFont32XP;
+    _forgetPassWord.highlighted = NO;
+    [self.view addSubview:_forgetPassWord];
+    [_forgetPassWord mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_passWordTF.mas_bottom).mas_offset(kUIMargen);
+        make.left.mas_equalTo(_passWordTF.mas_left);
+    }];
+    [_forgetPassWord addTarget:self action:@selector(touchupinsideforgetPassWordBtn) forControlEvents:UIControlEventTouchUpInside];
     
+    _signUpUser = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_signUpUser setTitle:@"新用户注册" forState:UIControlStateNormal];
+    _signUpUser.titleLabel.font = kUIFont32XP;
+    _signUpUser.highlighted = NO;
+    [self.view addSubview:_signUpUser];
+    [_signUpUser mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_forgetPassWord.mas_top);
+        make.right.mas_equalTo(_passWordTF.mas_right);
+    }];
+    [_signUpUser addTarget:self action:@selector(touchupinsidesignUpUserBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    _loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_loginBtn setTitle:@"登  录" forState:UIControlStateNormal];
+    _loginBtn.highlighted = NO;
+    [self.view addSubview:_loginBtn];
+    [_loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(_forgetPassWord.mas_bottomMargin);
+        make.centerX.mas_equalTo(self.view);
+        make.height.mas_equalTo(80);
+        make.width.mas_equalTo(150);
+    }];
+    [_loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -108,7 +175,7 @@
     
     [self.view addSubview:textField];
     textField.backgroundColor = kColorFEFFFF;
-//    textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    //    textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     textField.borderStyle = UITextBorderStyleNone;
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.font = [UIFont systemFontOfSize:22];
@@ -145,35 +212,5 @@
     
     return textField;
 }
-
-- (UITextField *)setUpTextField{
-    return [[UITextField alloc] init];
-}
-
-- (void)lookPassWord:(UIButton *)sender
-{
-    sender.highlighted = !sender.highlighted;
-    _passWordTF.secureTextEntry = !_passWordTF.secureTextEntry;
-}
-
-- (void)retractKeyboard {
-    [self.view endEditing:YES];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

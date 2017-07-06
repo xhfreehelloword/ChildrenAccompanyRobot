@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AVICTabBarController.h"
+#import "navLoginViewController.h"
 #import "LogoinViewController.h"
 
 @interface AppDelegate ()
@@ -29,7 +30,8 @@
         
     }else {
         
-        self.window.rootViewController = [[LogoinViewController alloc] init];
+        navLoginViewController *navc = [[navLoginViewController alloc] initWithRootViewController:[[LogoinViewController alloc] init]];
+        self.window.rootViewController = navc;
         
     }
     
