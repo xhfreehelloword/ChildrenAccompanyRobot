@@ -22,8 +22,17 @@
 // 注意: 此处仅设置公共标注样式, 私有的单独写到各自vc/view的.m文件
 
 // 用户状态
-#define kLockUserName @"userName"           // 取用户名K值
-#define kLoginCondition  @"LoginCondition"  // 是否为登录状态的标记
+//#define kLockUserName @"userName"           // 取用户名K值
+//#define kLoginCondition  @"LoginCondition"  // 是否为登录状态的标记
+
+// tag值
+#define kTag10 10   // 用完-登录注册
+#define kTag20 20
+#define kTag30 30
+#define kTag40 40
+#define kTag50 50
+#define kTag100 100
+#define kTag200 200 
 
 // 尺寸(屏幕)
 #define kScreenBounds [UIScreen mainScreen].bounds

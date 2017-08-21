@@ -20,8 +20,21 @@
     
 //    navc.backgroundColor = kColor28E2FA;
     [navc setBackgroundImage:[UIImage imageNamed:@"Snip20170706_5"] forBarMetrics:UIBarMetricsDefault];
+    [navc setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [navc setTintColor:[UIColor whiteColor]];
     
 }
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    
+//    self.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Snip20170817_1"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.topViewController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
+    [super pushViewController:viewController animated:animated];
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

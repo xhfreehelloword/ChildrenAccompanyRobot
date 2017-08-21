@@ -11,7 +11,8 @@
 #import "forgetPassViewController.h"
 
 
-@interface LogoinViewController (){
+@interface LogoinViewController ()<UITextFieldDelegate>
+{
     UIImageView *_iconImage;
     UITextField *_UserNameTF;
     UITextField *_passWordTF;
@@ -38,10 +39,31 @@
 
 @implementation LogoinViewController
 
+- (void)viewWillAppear:(BOOL)animated { // 即将加载出来是调用，隐藏导航栏。
+    
+//    self.navigationController.navigationBar.hidden = YES;
+    
+//    self.view.frame = CGRectMake(0, 0+99, kScreenWidth, kScreenHeight);
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        self.navigationController.navigationBar.hidden = YES;
+//    });
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    self.navigationController.navigationBar.translucent=NO;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Snip20170706_5"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage=[UIImage new];
+    
+
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:YES];
+//    [self.navigationController setNavigationBarHidden:YES];
+//    self.title = @"登  录";
     
     // 背景
     UIImageView *bgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"WechatIMG14"]];
@@ -52,6 +74,10 @@
 //    VeffectV.alpha = 0.9;
     [bgView addSubview:VeffectV];
     [self.view addSubview:bgView];
+    
+    
+    _UserNameTF.delegate = self;
+    
     
     
     [self setUpUI];
@@ -85,6 +111,18 @@
 - (void)retractKeyboard // view结束编辑状态
 {[self.view endEditing:YES];}
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField.tag == kTag10 + 1) {
+        
+        
+        
+    }
+    
+    return YES;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -108,6 +146,7 @@
     
     
     _UserNameTF = [self getUpTextFieldWithPlaceholder:@"请输入手机号" andTextFieldImage:@""];
+    _UserNameTF.tag = kTag10 + 1;
     _UserNameTF.keyboardType = UIKeyboardTypePhonePad;
     [_UserNameTF mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(_iconImage.mas_bottom).mas_offset(kUIUserToIconTop);
@@ -117,6 +156,7 @@
     }];
     
     _passWordTF = [self getUpTextFieldWithPlaceholder:@"密码" andTextFieldImage:@""];
+    _passWordTF.tag = kTag10 + 2;
     _passWordTF.secureTextEntry = YES;
     //    _passWordTF.keyboardType = UIKeyboardTypeNamePhonePad;
     [_passWordTF mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7102FF7F1F46B1EB00B6CD54 /* sfOKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7102FF7E1F46B1EB00B6CD54 /* sfOKViewController.m */; };
 		716A23021EF7768800E7E1E8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A23011EF7768800E7E1E8 /* main.m */; };
 		716A23051EF7768800E7E1E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 716A23041EF7768800E7E1E8 /* AppDelegate.m */; };
 		716A23101EF7768800E7E1E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 716A230E1EF7768800E7E1E8 /* LaunchScreen.storyboard */; };
@@ -50,6 +51,8 @@
 /* Begin PBXFileReference section */
 		46E11FA98AC302533B5D784C /* Pods-ChildrenAccompanyRobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChildrenAccompanyRobot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChildrenAccompanyRobot/Pods-ChildrenAccompanyRobot.debug.xcconfig"; sourceTree = "<group>"; };
 		4DA0715875D73E6362066804 /* Pods-ChildrenAccompanyRobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChildrenAccompanyRobot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChildrenAccompanyRobot/Pods-ChildrenAccompanyRobot.release.xcconfig"; sourceTree = "<group>"; };
+		7102FF7D1F46B1EB00B6CD54 /* sfOKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfOKViewController.h; sourceTree = "<group>"; };
+		7102FF7E1F46B1EB00B6CD54 /* sfOKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = sfOKViewController.m; sourceTree = "<group>"; };
 		716A22FD1EF7768800E7E1E8 /* ChildrenAccompanyRobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChildrenAccompanyRobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		716A23011EF7768800E7E1E8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		716A23031EF7768800E7E1E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				71FB457A1F0E49A500903270 /* forgetPassViewController.m */,
 				71FB45761F0E498600903270 /* singViewController.h */,
 				71FB45771F0E498600903270 /* singViewController.m */,
+				7102FF7D1F46B1EB00B6CD54 /* sfOKViewController.h */,
+				7102FF7E1F46B1EB00B6CD54 /* sfOKViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -704,6 +709,7 @@
 				716A23791EFA722500E7E1E8 /* XHBottomBtn.m in Sources */,
 				716A236C1EFA4A4C00E7E1E8 /* AVICTabBarController.m in Sources */,
 				716A236F1EFA4A9A00E7E1E8 /* AVICNavController.m in Sources */,
+				7102FF7F1F46B1EB00B6CD54 /* sfOKViewController.m in Sources */,
 				716A23051EF7768800E7E1E8 /* AppDelegate.m in Sources */,
 				716A23021EF7768800E7E1E8 /* main.m in Sources */,
 				716A235E1EFA43B600E7E1E8 /* OperationViewController.m in Sources */,
