@@ -9,6 +9,7 @@
 #import "LogoinViewController.h"
 #import "singViewController.h"
 #import "forgetPassViewController.h"
+#import "AVICTabBarController.h"
 
 
 @interface LogoinViewController ()<UITextFieldDelegate>
@@ -85,6 +86,11 @@
 
 - (void)loginBtnClick:(UIButton *)ssender {
     NSLog(@"登    录");
+    
+//    UIWindow *newWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [UIApplication sharedApplication].keyWindow.rootViewController = [[AVICTabBarController alloc] init];
+    
+    
 }
 
 - (void)touchupinsidesignUpUserBtn
@@ -100,6 +106,9 @@
 - (void)touchupinsideforgetPassWordBtn
 {
     NSLog(@"忘记密码");
+    forgetPassViewController *forgetPassVC = [[forgetPassViewController alloc] init];
+    [self.navigationController pushViewController:forgetPassVC animated:YES];
+    
 }
 
 - (void)lookPassWord:(UIButton *)sender // 显示密码

@@ -34,10 +34,6 @@
 
 @implementation singViewController
 
-- (void)viewWillAppear:(BOOL)animated { // 即将加载出来是调用，隐藏导航栏。
-    self.navigationController.navigationBar.hidden = NO;
-}
-
 
 //获取验证码倒计时
 - (void)receiveCheckNumButton{
@@ -80,6 +76,7 @@
     dispatch_resume(_timer);
 }
 
+// 确定
 - (void)confirmBtnChange:(UIButton *)sender{
     
     NSLog(@"确定");
@@ -93,7 +90,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.navigationController setNavigationBarHidden:NO];
     self.title = @"注册";
     
     // 背景
@@ -123,7 +119,7 @@
         make.height.mas_equalTo(kUIHeight);
     }];
     
-    _getIdentifyCode = [self getUpTextFieldWithPlaceholder:@"输入验证码" andTextFieldImage:@""];
+    _getIdentifyCode = [self getIdentifyCodeTextFieldWithPlaceholderString:@"输入验证码"];
     _getIdentifyCode.tag = kTag10 + 6;
     _getIdentifyCode.keyboardType = UIKeyboardTypeNumberPad;
     [_getIdentifyCode mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -219,6 +215,35 @@
     iconImage.frame = CGRectMake(0, 0, 50, 50);
     iconImage.backgroundColor = kColorRandom;
     [textField addSubview:iconImage];
+    
+    textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 1)];
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    
+    return textField;
+}
+
+// 获取验证码
+- (UITextField *)getIdentifyCodeTextFieldWithPlaceholderString:(NSString *)placeholder {
+    UITextField *textField = [[UITextField alloc] init];
+    
+    [self.view addSubview:textField];
+    textField.backgroundColor = kColorFEFFFF;
+    //    textField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+    textField.borderStyle = UITextBorderStyleNone;
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.font = [UIFont systemFontOfSize:22];
+    
+    textField.placeholder = placeholder;
+    // MARK: - 默认字体的颜色，大小（placeholder）.
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    dict[NSForegroundColorAttributeName] = kColor9EF1FC;
+    dict[NSFontAttributeName] = [UIFont systemFontOfSize:22];
+    NSAttributedString *attributed = [[NSAttributedString alloc] initWithString:textField.placeholder attributes:dict];
+    [textField setAttributedPlaceholder:attributed];
+    
+    textField.layer.cornerRadius = 25;
+    textField.clipsToBounds = YES;
+    textField.layer.masksToBounds = YES;
     
     textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 1)];
     textField.leftViewMode = UITextFieldViewModeAlways;
